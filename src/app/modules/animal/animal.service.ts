@@ -69,6 +69,28 @@ const deletePostByAdmin = async (postId: string) => {
   return result;
 };
 
+const incrementLike = async (id: string) => {
+  const result = await Animal.findByIdAndUpdate(
+    id,
+    { $inc: { like: 1 } },
+    {
+      new: true,
+    },
+  );
+  return result;
+};
+
+const incrementDislike = async (id: string) => {
+  const result = await Animal.findByIdAndUpdate(
+    id,
+    { $inc: { disLike: 1 } },
+    {
+      new: true,
+    },
+  );
+  return result;
+};
+
 export const animalServices = {
   createAnimalIntoDB,
   getAllAnimalFromDB,
@@ -76,4 +98,6 @@ export const animalServices = {
   updatePostByAdmin,
   userDeleteHisOwnPost,
   deletePostByAdmin,
+  incrementLike,
+  incrementDislike,
 };

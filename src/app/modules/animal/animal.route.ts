@@ -41,4 +41,7 @@ router.delete(
   animalControllers.deletePostByAdmin,
 );
 
+router.patch('/like/:id', animalControllers.like);
+router.patch('/disLike/:id', animalControllers.disLike);
+
 export const AnimalRoutes = router;

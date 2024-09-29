@@ -83,6 +83,30 @@ const deletePostByAdmin = catchAsync(async (req, res) => {
   });
 });
 
+const like = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await animalServices.incrementLike(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'liked',
+    data: result,
+  });
+});
+
+const disLike = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await animalServices.incrementDislike(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'disLiked',
+    data: result,
+  });
+});
+
 export const animalControllers = {
   createAnimal,
   getAllAnimal,
@@ -90,4 +114,6 @@ export const animalControllers = {
   updatePostByAdmin,
   deleteOwnPost,
   deletePostByAdmin,
+  like,
+  disLike,
 };
