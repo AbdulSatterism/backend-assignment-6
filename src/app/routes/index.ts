@@ -3,6 +3,7 @@ import { UserRoutes } from '../modules/user/user.route';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { CategoryRoutes } from '../modules/category/category.route';
 import { AnimalRoutes } from '../modules/animal/animal.route';
+import { CommentRoutes } from '../modules/comment/comment.route';
 
 const router = Router();
 
@@ -22,6 +23,10 @@ const moduleRoutes = [
   {
     path: '/animal',
     route: AnimalRoutes,
+  },
+  {
+    path: '/comment',
+    route: CommentRoutes,
   },
 ];
 
