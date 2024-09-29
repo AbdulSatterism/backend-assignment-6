@@ -14,6 +14,13 @@ router.post(
   animalControllers.createAnimal,
 );
 
-// router.get('/', categoryControllers.allCategory);
+router.get('/', animalControllers.getAllAnimal);
+
+router.patch(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  validateRequest(animalValidations.updateAnimalSchema),
+  animalControllers.updateOwnPost,
+);
 
 export const AnimalRoutes = router;
