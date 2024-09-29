@@ -41,8 +41,39 @@ const userUpdateHisPostFromDB = async (
   return result;
 };
 
+const userDeleteHisOwnPost = async (postId: string, userId: string) => {
+  const postExist = await Animal.findById(postId);
+
+  if (!postExist) {
+    throw new AppError(httpStatus.NOT_FOUND, 'post not found');
+  }
+
+  if (postExist.user.toString() !== userId) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'This is not your post');
+  }
+
+  const result = await Animal.findByIdAndDelete(postId);
+
+  return result;
+};
+
+const updatePostByAdmin = async (postId: string, payload: TAnimal) => {
+  const result = await Animal.findByIdAndUpdate(postId, payload, { new: true });
+
+  return result;
+};
+
+const deletePostByAdmin = async (postId: string) => {
+  const result = await Animal.findByIdAndDelete(postId);
+
+  return result;
+};
+
 export const animalServices = {
   createAnimalIntoDB,
   getAllAnimalFromDB,
   userUpdateHisPostFromDB,
+  updatePostByAdmin,
+  userDeleteHisOwnPost,
+  deletePostByAdmin,
 };

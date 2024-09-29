@@ -23,4 +23,22 @@ router.patch(
   animalControllers.updateOwnPost,
 );
 
+router.delete(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  animalControllers.deleteOwnPost,
+);
+
+router.patch(
+  '/post-update-admin/:id',
+  auth(USER_ROLE.admin),
+  validateRequest(animalValidations.updateAnimalSchema),
+  animalControllers.updatePostByAdmin,
+);
+router.delete(
+  '/post-delete-admin/:id',
+  auth(USER_ROLE.admin),
+  animalControllers.deletePostByAdmin,
+);
+
 export const AnimalRoutes = router;

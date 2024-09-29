@@ -43,8 +43,51 @@ const updateOwnPost = catchAsync(async (req, res) => {
   });
 });
 
+const deleteOwnPost = catchAsync(async (req, res) => {
+  const postId = req.params.id;
+  const { userId } = req.user;
+
+  const result = await animalServices.userDeleteHisOwnPost(postId, userId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'post deleted successfully',
+    data: result,
+  });
+});
+
+const updatePostByAdmin = catchAsync(async (req, res) => {
+  const postId = req.params.id;
+
+  const result = await animalServices.updatePostByAdmin(postId, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'post updated successfully',
+    data: result,
+  });
+});
+
+const deletePostByAdmin = catchAsync(async (req, res) => {
+  const postId = req.params.id;
+
+  const result = await animalServices.deletePostByAdmin(postId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'post deleted successfully',
+    data: result,
+  });
+});
+
 export const animalControllers = {
   createAnimal,
   getAllAnimal,
   updateOwnPost,
+  updatePostByAdmin,
+  deleteOwnPost,
+  deletePostByAdmin,
 };
