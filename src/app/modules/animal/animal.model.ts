@@ -5,8 +5,7 @@ import { model } from 'mongoose';
 const animalSchema = new Schema<TAnimal>(
   {
     image: {
-      type: [String],
-      default: [],
+      type: String,
     },
     tips: {
       type: [String],

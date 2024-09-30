@@ -16,7 +16,7 @@ const createAnimalIntoDB = async (payload: TAnimal) => {
 };
 
 const getAllAnimalFromDB = async () => {
-  const result = await Animal.find();
+  const result = await Animal.find().populate('user').populate('category');
 
   return result;
 };

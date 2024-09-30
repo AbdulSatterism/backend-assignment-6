@@ -23,11 +23,17 @@ const createUserIntoDB = async (payload: TUser) => {
   type TJWTPayload = {
     userId: any;
     role: 'admin' | 'user';
+    email: string;
+    image: string;
+    name: string;
   };
 
   const jwtPayload: TJWTPayload = {
     userId: newUser?._id,
     role: newUser?.role,
+    email: newUser?.email,
+    image: newUser?.image,
+    name: newUser?.name,
   };
 
   const accessToken = createToken(
