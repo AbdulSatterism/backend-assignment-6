@@ -9,7 +9,7 @@ const animalSchema = new Schema<TAnimal>(
     },
     tips: {
       type: [String],
-      default: [],
+      default: ['no tips available'],
     },
     description: {
       type: String,

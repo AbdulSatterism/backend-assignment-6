@@ -27,11 +27,17 @@ const loginUser = async (payload: TLogin) => {
   type TJWTPayload = {
     userId: any;
     role: 'admin' | 'user';
+    email: string;
+    image: string;
+    name: string;
   };
 
   const jwtPayload: TJWTPayload = {
     userId: user?._id,
     role: user?.role,
+    email: user?.email,
+    image: user?.image,
+    name: user?.name,
   };
 
   const accessToken = createToken(

@@ -41,4 +41,6 @@ router.delete(
   userControllers.deleteUser,
 );
 
+router.patch('/follower-increase/:id', userControllers.incrementFollower);
+
 export const UserRoutes = router;

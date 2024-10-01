@@ -86,6 +86,18 @@ const toggleRole = catchAsync(async (req, res) => {
   });
 });
 
+const incrementFollower = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await userServices.incrementFollower(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'follower increased',
+    data: result,
+  });
+});
+
 export const userControllers = {
   createUser,
   allUser,
@@ -94,4 +106,5 @@ export const userControllers = {
   toggleRole,
   deleteUser,
   updateUserOnlyAdmin,
+  incrementFollower,
 };

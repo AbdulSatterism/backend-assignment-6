@@ -6,7 +6,6 @@ const createAnimalSchema = z.object({
     image: z.string(),
     user: z.string(),
     category: z.string(),
-    tips: z.array(z.string()),
   }),
 });
 

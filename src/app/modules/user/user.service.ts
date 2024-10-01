@@ -91,6 +91,17 @@ const toggleRoleInDB = async (id: string) => {
   return result;
 };
 
+const incrementFollower = async (id: string) => {
+  const result = await User.findByIdAndUpdate(
+    id,
+    { $inc: { follower: 1 } },
+    {
+      new: true,
+    },
+  );
+  return result;
+};
+
 export const userServices = {
   createUserIntoDB,
   getUserFromDB,
@@ -99,4 +110,5 @@ export const userServices = {
   toggleRoleInDB,
   deleteUserFromDB,
   updateUserOnlyAdmin,
+  incrementFollower,
 };
