@@ -14,6 +14,7 @@ router.post(
   commentControllers.addComment,
 );
 router.get('/', commentControllers.allComment);
+
 router.get('/:id', commentControllers.getCommentById);
 
 export const CommentRoutes = router;

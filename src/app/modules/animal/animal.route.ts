@@ -29,6 +29,12 @@ router.delete(
   animalControllers.deleteOwnPost,
 );
 
+router.get(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  animalControllers.findById,
+);
+
 router.patch(
   '/post-update-admin/:id',
   auth(USER_ROLE.admin),

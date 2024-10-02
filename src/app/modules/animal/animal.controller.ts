@@ -25,6 +25,17 @@ const getAllAnimal = catchAsync(async (req, res) => {
   });
 });
 
+const findById = catchAsync(async (req, res) => {
+  const result = await animalServices.animalFindById(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'post got successfully',
+    data: result,
+  });
+});
+
 const updateOwnPost = catchAsync(async (req, res) => {
   const postId = req.params.id;
   const { userId } = req.user;
@@ -116,4 +127,5 @@ export const animalControllers = {
   deletePostByAdmin,
   like,
   disLike,
+  findById
 };

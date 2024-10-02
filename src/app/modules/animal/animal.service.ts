@@ -21,6 +21,12 @@ const getAllAnimalFromDB = async () => {
   return result;
 };
 
+const animalFindById = async (id:string) => {
+  const result = await Animal.findById(id);
+
+  return result;
+};
+
 const userUpdateHisPostFromDB = async (
   postId: string,
   userId: string,
@@ -100,4 +106,5 @@ export const animalServices = {
   deletePostByAdmin,
   incrementLike,
   incrementDislike,
+  animalFindById
 };
