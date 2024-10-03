@@ -4,6 +4,7 @@ import cors from 'cors';
 import router from './app/routes';
 import globalErrorHandler from './app/middleware/globalErrorHandler';
 import notFound from './app/middleware/notFound';
+import path from 'path';
 
 const app: Application = express();
 
@@ -18,7 +19,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('hello assignment 6 final for me as a MERN');
 });
 
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(globalErrorHandler);
 app.use(notFound);

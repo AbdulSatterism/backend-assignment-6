@@ -16,12 +16,15 @@ const createAnimalIntoDB = async (payload: TAnimal) => {
 };
 
 const getAllAnimalFromDB = async () => {
-  const result = await Animal.find().populate('user').populate('category');
+  const result = await Animal.find()
+    .populate('user')
+    .populate('category')
+    .sort({ createdAt: -1, like: -1 });
 
   return result;
 };
 
-const animalFindById = async (id:string) => {
+const animalFindById = async (id: string) => {
   const result = await Animal.findById(id);
 
   return result;
@@ -106,5 +109,5 @@ export const animalServices = {
   deletePostByAdmin,
   incrementLike,
   incrementDislike,
-  animalFindById
+  animalFindById,
 };
