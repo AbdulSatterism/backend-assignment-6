@@ -20,9 +20,10 @@ export const initialPayment = async (paymentData: TPaymentData) => {
       store_id: config.store_id,
       signature_key: config.signature_key,
       tran_id: paymentData.transId,
-      success_url: `http://localhost:5000/api/rental-pay/success?rentalId=${paymentData.rentalId}&transId=${paymentData.transId}&status=success`,
-      fail_url: 'http://localhost:5000/api/rental-pay/success?status=failed',
-      cancel_url: 'http://localhost:3000',
+      success_url: `https://backend-assignment-6.vercel.app/api/rental-pay/success?rentalId=${paymentData.rentalId}&transId=${paymentData.transId}&status=success`,
+      fail_url:
+        'https://backend-assignment-6.vercel.app/api/rental-pay/success?status=failed',
+      cancel_url: 'https://animal-care-chi.vercel.app',
       amount: paymentData.amount,
       currency: 'BDT',
       desc: 'Merchant Registration Payment',
